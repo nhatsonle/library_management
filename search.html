@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Search of Hust Libary</title>
+    <style>
+        .search-button {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+        .search-button:hover {
+            background-color: #09b300;
+            border-color: #008509;
+        }
+
+        .home-button {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+
+        .home-button:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h4>Staff hust </h4>
+                        <button type="button" id="homeButton" class="btn btn-secondary home-button" onclick="return_home()">Home</button>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-7">
+
+                                <form  id="searchForm">
+                                    <div class="input-group mb-3">
+                                        <input type="text" name="search" id="searchInput" class="form-control" placeholder="Search data">
+                                        <button type="submit" id="myb" class="btn btn-secondary search-buton ">Search</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Quantity</th>
+                                    <th>Author ID</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        
+        $(document).ready(function() {
+            $('#searchForm').on('submit', function(event) {
+                event.preventDefault();
+
+                let searchText = $('#searchInput').val().trim();
+                if (searchText === '') {
+                    console.log('Search text is empty.');
+                    return;
+                }
+
+                fetch(`/search?search=${encodeURIComponent(searchText)}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log(data);
+                        $('#tableBody').empty();
+
+                        if (data.message) {
+                            // Handle no record found message
+                            $('#tableBody').append(`<tr><td colspan="4">${data.message}</td></tr>`);
+                        } else {
+                            data.forEach(item => {
+                                let row = $('<tr></tr>');
+                                row.append(`<td>${item.book_id}</td>`);
+                                row.append(`<td>${item.title}</td>`);
+                                row.append(`<td>${item.quantity}</td>`);
+                                row.append(`<td>${item.author_id}</td>`);
+                                $('#tableBody').append(row);
+                            });
+                        }
+                    })
+                    .catch(error => console.error('Error fetching data:', error));
+            });
+        });
+    </script>
+    <script>
+        function return_home(){
+        window.location="http://localhost:4000";
+            }
+    </script>
+    
+      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+  
+
+</body>
+</html>
