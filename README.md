@@ -5,6 +5,7 @@ A robust database design for a library management system, developed using Postgr
 ---
 
 ## Table of Contents
+- [Project Structure](#project-structure)
 - [Overview](#overview)
 - [Features](#features)
 - [Entity-Relationship Diagram](#entity-relationship-diagram)
@@ -15,6 +16,13 @@ A robust database design for a library management system, developed using Postgr
 - [License](#license)
 
 ---
+
+## Project Structure
+- `sql_queries/`: Contains reusable SQL queries for data retrieval and reporting.
+- `dataset_script/`: Includes scripts for initializing and populating the database.
+- `functions_triggers/`: Encapsulates PostgreSQL functions and triggers for implementing business logic.
+- `role/`: Defines role-based access control for administrators, librarians, and users.
+
 
 ## Overview
 This project demonstrates a carefully designed database for a library management system. It is built to ensure data consistency, integrity, and scalability. The database handles core library operations such as:
