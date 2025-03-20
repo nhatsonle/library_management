@@ -1,11 +1,1 @@
-# library_management
-The Library Management System is a web application designed to manage books, readers, book borrowing and returning, and library staff. It provides features for book management, reader management, borrowing and returning management, staff management, and monthly reporting and statistics. This project aims at imitating the foundatation of an automatic digital library system to save time for redundant manual tasks.
-
-This system encompasses comprehensive functionalities such as storing and managing detailed information about books, authors, publishers, and genres, as well as maintaining reader profiles and staff accounts. Users can easily search for books, make online reservations, borrow and return books seamlessly through the platform, and even access a free online reading service. Library staff are equipped with tools to efficiently track and update book statuses, manage inventory, and handle user inquiries effectively.
-
-The application also features robust reporting and statistical capabilities, generating insightful reports on various aspects like the number of books borrowed or returned, popular genres, prolific authors, and publisher contributions. These analytics assist in informed decision-making and strategic planning for library resource allocation and service improvements.
-
-On the technical front, the system is built with a user-friendly front-end developed using HTML, CSS, and JavaScript, ensuring an intuitive and responsive user interface. The back-end is powered by Node.js, facilitating efficient data processing and seamless integration with the database. The underlying database is meticulously designed, incorporating entities such as Books, Authors, Users, Staff, and Transactions, all interconnected through well-defined relationships to maintain data integrity and support complex queries.
-
-Overall, this Library Management System aims to streamline library operations, enhance user experience, and provide a scalable solution that can adapt to various library sizes and requirements. It stands as a foundational model for modern digital libraries seeking to optimize their services through automation and comprehensive digital infrastructure.
-
+Đây là toàn bộ file để setup database, bạn có thể cài đặt file nào trước cũng được như riêng file setup_everything_left.sql phải cài đặt cuối cùng
